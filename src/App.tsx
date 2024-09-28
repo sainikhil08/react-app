@@ -2,8 +2,12 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavigationBar from "./components/NavigationBar";
 import MainGrid from "./components/MainGrid";
 import SidePanel from "./components/SidePanel";
+import { useState } from "react";
+import { Genre } from "./hooks/useGenres";
 
 function App() {
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
   return (
     <Grid
       templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
@@ -14,11 +18,14 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <SidePanel />
+          <SidePanel
+            selectedGenre={selectedGenre}
+            onClick={(v) => setSelectedGenre(v)}
+          />
         </GridItem>
       </Show>
       <GridItem area="main" paddingX={5}>
-        <MainGrid />
+        <MainGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>
   );
