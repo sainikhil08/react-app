@@ -7,20 +7,25 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
+import SearchInput from "./SearchInput";
 
-const NavigationBar = () => {
+interface Props {
+  onSearch: (searchQuery: string) => void;
+}
+
+const NavigationBar = ({ onSearch }: Props) => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
-    <HStack justifyContent="space-between" padding="10px">
+    <HStack padding="10px">
       <Image src={logo} boxSize="60px" />
-      <Input placeholder="Enter to Search" size="20px" />
+      <SearchInput onSearch={onSearch} />
       <Switch
         isChecked={colorMode === "dark"}
         colorScheme="green"
         size="lg"
         onChange={toggleColorMode}
       />
-      <Text>Dark Mode</Text>
+      <Text whiteSpace="nowrap">Dark Mode</Text>
     </HStack>
   );
 };
