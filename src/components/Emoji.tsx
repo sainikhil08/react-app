@@ -3,11 +3,11 @@ import bullsEye from "../assets/bulls-eye.webp";
 import thumbsUp from "../assets/thumbs-up.webp";
 
 interface Props {
-  rating: number;
+  rating: number | null;
 }
 
 const Emoji = ({ rating }: Props) => {
-  if (rating < 4) return;
+  if (rating === null || rating < 4) return null;
 
   const emojiMap: { [key: number]: ImageProps } = {
     5: { src: bullsEye, alt: "Top Rated", boxSize: "35px" },
