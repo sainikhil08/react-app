@@ -26,7 +26,7 @@ const SidePanel = ({ selectedGenre, onClick }: Props) => {
       </Heading>
       <List spacing={1}>
         {isLoading && skeletons.map((s) => <SidePanelSkeleton key={s} />)}
-        {data.map((genre: Genre) => (
+        {data?.results.map((genre: Genre) => (
           <HStack key={genre.id}>
             <Image
               boxSize="40px"

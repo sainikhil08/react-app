@@ -1,11 +1,9 @@
 import { AxiosRequestConfig, CanceledError } from "axios";
 import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
+import { Response } from "../services/api-client";
 
-interface Response<T>{
-    count: number;
-    results: T[];
-}
+
 const useData= <T>(endpoint: string, deps?: any[], requestConfig?: AxiosRequestConfig)=>{
     const controller= new AbortController();
     const [data,setData] = useState<T[]>([]);
