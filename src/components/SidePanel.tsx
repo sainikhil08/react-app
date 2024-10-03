@@ -13,10 +13,10 @@ import CropImage from "../services/CropImage";
 import SidePanelSkeleton from "./SidePanelSkeleton";
 
 interface Props {
-  selectedGenre: Genre | null;
-  onClick: (genre: Genre) => void;
+  selectedGenreId: number | null;
+  onClick: (genre: number) => void;
 }
-const SidePanel = ({ selectedGenre, onClick }: Props) => {
+const SidePanel = ({ selectedGenreId, onClick }: Props) => {
   const { data, error, isLoading } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
@@ -35,9 +35,9 @@ const SidePanel = ({ selectedGenre, onClick }: Props) => {
               src={CropImage(genre.image_background)}
             />
             <Button
-              fontWeight={genre.id == selectedGenre?.id ? "bold" : ""}
-              color={genre.id == selectedGenre?.id ? "yellow" : ""}
-              onClick={() => onClick(genre)}
+              fontWeight={genre.id == selectedGenreId ? "bold" : ""}
+              color={genre.id == selectedGenreId ? "yellow" : ""}
+              onClick={() => onClick(genre.id)}
               variant="link"
               fontSize="20px"
               whiteSpace="normal"
