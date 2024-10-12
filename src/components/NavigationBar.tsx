@@ -9,16 +9,13 @@ import {
 import logo from "../assets/logo.webp";
 import SearchInput from "./SearchInput";
 
-interface Props {
-  onSearch: (searchQuery: string) => void;
-}
-
-const NavigationBar = ({ onSearch }: Props) => {
+const NavigationBar = () => {
   const { toggleColorMode, colorMode } = useColorMode();
+
   return (
     <HStack padding="10px">
       <Image src={logo} boxSize="60px" />
-      <SearchInput onSearch={onSearch} />
+      <SearchInput />
       <Switch
         isChecked={colorMode === "dark"}
         colorScheme="green"

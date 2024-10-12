@@ -11,13 +11,12 @@ import useGenres from "../hooks/useGenres";
 import { Genre } from "../hooks/useGenres";
 import CropImage from "../services/CropImage";
 import SidePanelSkeleton from "./SidePanelSkeleton";
+import useGameQueryStore from "../state management/store";
 
-interface Props {
-  selectedGenreId: number | null;
-  onClick: (genre: number) => void;
-}
-const SidePanel = ({ selectedGenreId, onClick }: Props) => {
+const SidePanel = () => {
   const { data, error, isLoading } = useGenres();
+  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
+  const setGenreId = useGameQueryStore((s) => s.setGenreId);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
     <>
@@ -37,7 +36,7 @@ const SidePanel = ({ selectedGenreId, onClick }: Props) => {
             <Button
               fontWeight={genre.id == selectedGenreId ? "bold" : ""}
               color={genre.id == selectedGenreId ? "yellow" : ""}
-              onClick={() => onClick(genre.id)}
+              onClick={() => setGenreId(genre.id)}
               variant="link"
               fontSize="20px"
               whiteSpace="normal"
