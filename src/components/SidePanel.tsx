@@ -8,7 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
-import { Genre } from "../hooks/useGenres";
+import { Genre } from "../entities/Genre";
 import CropImage from "../services/CropImage";
 import SidePanelSkeleton from "./SidePanelSkeleton";
 import useGameQueryStore from "../state management/store";

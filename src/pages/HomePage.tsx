@@ -1,20 +1,16 @@
-import { Grid, GridItem, Show, Flex, Box } from "@chakra-ui/react";
-import NavigationBar from "./components/NavigationBar";
-import MainGrid from "./components/MainGrid";
-import SidePanel from "./components/SidePanel";
-import PlatformSelector from "./components/PlatformSelector";
-import SortSelector from "./components/SortSelector";
-import MainLabel from "./components/MainLabel";
+import { Grid, Show, GridItem, Box, Flex } from "@chakra-ui/react";
+import MainGrid from "../components/MainGrid";
+import MainLabel from "../components/MainLabel";
+import PlatformSelector from "../components/PlatformSelector";
+import SidePanel from "../components/SidePanel";
+import SortSelector from "../components/SortSelector";
 
-function App() {
+const HomePage = () => {
   return (
     <Grid
-      templateAreas={{ base: `"nav" "main"`, lg: `"nav nav" "aside main"` }}
+      templateAreas={{ base: `"main"`, lg: `"aside main"` }}
       templateColumns={{ base: "1fr", lg: "200px 1fr" }}
     >
-      <GridItem area="nav">
-        <NavigationBar />
-      </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <SidePanel />
@@ -34,6 +30,6 @@ function App() {
       </GridItem>
     </Grid>
   );
-}
+};
 
-export default App;
+export default HomePage;
